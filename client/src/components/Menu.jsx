@@ -1,6 +1,13 @@
 import React, { useState } from "react";
-import MenuButton from "./MenuButton";
 import "../css/styles.css";
+
+function MenuButton(props) {
+    return (
+        <a className={`menu-btn ${props.active ? "active-btn" : ""}`} onClick={props.onClick}>
+            <div>{props.value}</div>
+        </a>
+    )
+}
 
 function Menu() {
     const [activeBtn, setActiveBtn] = useState("SOLDIER");
@@ -9,39 +16,19 @@ function Menu() {
         setActiveBtn(value);
     }
 
+    const menu_btns = ["HOME", "MULTIPLAYER", "CAMPAIGN", "SOLDIER", "STORE", "MORE"];
+
     return (
         <div className="BF-menu">
             <div className="menu-container">
-                <MenuButton 
-                    value="HOME" 
-                    active = {activeBtn === "HOME"}
-                    onClick={() => handleClick("HOME")}
-                />
-                <MenuButton 
-                    value="MULTIPLAYER" 
-                    active = {activeBtn === "MULTIPLAYER"}
-                    onClick={() => handleClick("MULTIPLAYER")}
-                />
-                <MenuButton 
-                    value="CAMPAIGN" 
-                    active = {activeBtn === "CAMPAIGN"}
-                    onClick={() => handleClick("CAMPAIGN")}
-                />
-                <MenuButton 
-                    value="SOLDIER" 
-                    active = {activeBtn === "SOLDIER"}
-                    onClick={() => handleClick("SOLDIER")}
-                />
-                <MenuButton 
-                    value="STORE" 
-                    active = {activeBtn === "STORE"}
-                    onClick={() => handleClick("STORE")}
-                />
-                <MenuButton 
-                    value="MORE" 
-                    active = {activeBtn === "MORE"}
-                    onClick={() => handleClick("MORE")}
-                />
+                {menu_btns.map(menu_btn => (
+                    <MenuButton 
+                        key={menu_btn} 
+                        value={menu_btn}
+                        active={activeBtn === menu_btn}
+                        onClick={() => handleClick(menu_btn)}
+                    />
+                ))}
             </div>
 
             <div className="menu-bar"></div>

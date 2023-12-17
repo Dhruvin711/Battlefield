@@ -2,6 +2,7 @@ import React from "react";
 // import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import soldier__BFemblem from './assets/soldier__BFemblem.svg';
+
 import SideMenu from "./components/SideMenu";
 import Menu from "./components/Menu";
 import Invite from "./components/Invite";
