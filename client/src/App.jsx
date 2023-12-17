@@ -15,8 +15,8 @@ function App() {
             <div className="battlefield4_bg"></div>
             <img className="soldier__BFemblem" src={soldier__BFemblem} alt="soldier__BFemblem" />
 
-            <SideMenu />
             <Menu />
+            <SideMenu />
             <Invite />
 
             <Battlefield4 />

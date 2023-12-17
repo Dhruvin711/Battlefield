@@ -4,11 +4,13 @@
     padding: 0;
 }
 
+/* ------------------------------- Soldier-Page ------------------------------- */
+
 body {
     margin: 0;
     padding: 0;
     z-index: 0;
-    
+
     background-image: linear-gradient(rgba(0, 12, 19, .6), rgba(0, 12, 19, .6)), url(https://uploads-ssl.webflow.com/6013fff62154adaa4600f932/6038f70ef0141a2f22d50f58_menu__background.jpg);
     background-size: auto, cover;
 }
@@ -26,9 +28,65 @@ body {
     display: inline-block;
     position: absolute;
     z-index: 1;
-    
+
     top: 0;
     bottom: auto;
     left: auto;
     right: 35.5vh;
+}
+
+/* ------------------------------- Menu ------------------------------- */
+
+.BF-menu {
+    width: 100%;
+    height: 100vh;
+    padding: 4vh 0 6vh 12vh;
+    position: relative;
+}
+
+.menu-container {
+    display: flex;
+    justify-content: left;
+}
+
+.menu-btn {
+    opacity: .8;
+    color: #fff;
+    text-align: left;
+    margin-right: 24px;
+    cursor: pointer;
+    
+    text-decoration: none;
+    font-size: 14px;
+    font-family: Rajdhani, sans-serif;
+    font-weight: 500;
+    line-height: 3.5vh;
+    transition: text-shadow .1s cubic-bezier(.455, .03, .515, .955);
+}
+
+.menu-btn:hover {
+    text-shadow: 0 0 5px rgba(255, 255, 255, .8);
+}
+
+.active-btn {
+    border-bottom: 1.8px solid #fff;
+    height: 3.7vh;
+    opacity: 1;
+    font-weight: 700;
+}
+
+.active-btn:hover {
+    text-shadow: 0 0 5px rgba(255, 255, 255, .8);
+}
+
+.menu-bar {
+    z-index: 1;
+    width: 70vw;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(255, 255, 255, .15) 73%, rgba(255, 255, 255, 0));
+    position: absolute;
+    top: 7.6vh;
+    bottom: auto;
+    left: 12vh;
+    right: 0%;
 }
