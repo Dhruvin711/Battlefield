@@ -20,7 +20,7 @@ function App() {
             <SideMenu />
             <Invite />
 
-            <Battlefield4 />
+            {/* <Battlefield4 /> */}
         </div>
     )
 }
