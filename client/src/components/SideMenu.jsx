@@ -14,14 +14,14 @@ function SideMenuBtn(props) {
             style={{ 
                 backgroundImage: `url(${require(`../assets/side_menu/${buttonData.tag}.svg`)})`,
                 borderLeft: `${props.active ? "3px solid #ee930e" : "3px solid #00000000"}`,
-                opacity: `${props.active ? "1" : "0.5"}`
+                opacity: `${props.active ? (isHover ? "1" : "1") : (isHover ? "1" : "0.5")}`
             }}
             onMouseOver={() => setIsHover(true)}
             onMouseOut={() => setIsHover(false)}
             onClick={props.onClick}
         >
             <div className='popup'
-                style={{ display: `${isHover ? 'block' : 'none'}`, opacity: `${isHover ? 1 : 0}` }}
+                style={{ display: `${isHover ? 'block' : 'none'}`, opacity: `${isHover ? "1" : "0"}` }}
             >
                 <div className='popup-text'>
                     {buttonData.name}

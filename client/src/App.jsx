@@ -1,8 +1,6 @@
 import React from "react";
 // import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import soldier__BFemblem from './assets/soldier__BFemblem.svg';
-
 import SideMenu from "./components/SideMenu";
 import Menu from "./components/Menu";
 import Invite from "./components/Invite";
@@ -14,13 +12,12 @@ function App() {
     return (
         <div className="container">
             <div className="battlefield4_bg"></div>
-            <img className="soldier__BFemblem" src={soldier__BFemblem} alt="soldier__BFemblem" />
 
             <Menu />
             <SideMenu />
             <Invite />
 
-            {/* <Battlefield4 /> */}
+            <Battlefield4 />
         </div>
     )
 }
