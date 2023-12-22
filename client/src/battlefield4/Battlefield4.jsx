@@ -109,10 +109,10 @@ function Battlefield4() {
                     <div className="soldier-content">
                         <div className="soldier-look">
                             <div className="soldier-dogtags">
-                                <img src={dogtag2} loading="eager" alt="" class="soldier-dogtags-left" />
-                                <img src={dogtag1} loading="eager" alt="" class="soldier-dogtags-right" />
+                                <img src={dogtag2} loading="eager" alt="" className="soldier-dogtags-left" />
+                                <img src={dogtag1} loading="eager" alt="" className="soldier-dogtags-right" />
                             </div>
-                            <img src={soldier_look} loading="eager" alt="" class="soldier-pic" />
+                            <img src={soldier_look} loading="eager" alt="" className="soldier-pic" />
                         </div>
 
                         <div className="soldier-content-w">
@@ -120,7 +120,7 @@ function Battlefield4() {
                                 <div className="soldier-level">
                                     <div className="soldier-level-bar"></div>
 
-                                    <img src={bf4_level} loading="eager" alt="" class="soldier-level-icon"></img>
+                                    <img src={bf4_level} loading="eager" alt="" className="soldier-level-icon"></img>
                                 </div>
 
                                 <div className="soldier-level-info">

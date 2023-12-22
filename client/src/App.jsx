@@ -1,10 +1,11 @@
 import React from "react";
-// import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import SideMenu from "./components/SideMenu";
 import Menu from "./components/Menu";
 import Invite from "./components/Invite";
 import Battlefield4 from "./battlefield4/Battlefield4";
+import TempPage from "./components/TempPage";
 
 import "./css/styles.css";
 
@@ -13,11 +14,14 @@ function App() {
         <div className="container">
             <div className="battlefield4_bg"></div>
 
-            <Menu />
+            <Routes>
+                <Route path="/bf_4" element={<Menu />} />
+                <Route path="/" element={<Menu />} />
+                <Route path="/*" element={<TempPage />} />
+            </Routes>
+            
             <SideMenu />
             <Invite />
-
-            <Battlefield4 />
         </div>
     )
 }

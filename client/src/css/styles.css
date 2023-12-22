@@ -156,6 +156,10 @@ body {
   z-index: 4;
 }
 
+.side-menu .footer-btns .popup {
+  margin-left: -8vh;
+}
+
 /* ------------------------------- Invite-Menu ------------------------------- */
 
 .invite {

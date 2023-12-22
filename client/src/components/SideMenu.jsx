@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 import sideMenuData from "../assets/side_menu_data";
 import quitSVG from '../assets/side_menu/quit.svg';
@@ -9,7 +10,7 @@ function SideMenuBtn(props) {
     const [isHover, setIsHover] = useState(false);
 
     return (
-        <a 
+        <Link to={`${buttonData.tag.toLowerCase()}`}
             className="side-menu-btn"
             style={{ 
                 backgroundImage: `url(${require(`../assets/side_menu/${buttonData.tag}.svg`)})`,
@@ -27,7 +28,7 @@ function SideMenuBtn(props) {
                     {buttonData.name}
                 </div>
             </div>
-        </a>
+        </Link>
     )
 }
 
