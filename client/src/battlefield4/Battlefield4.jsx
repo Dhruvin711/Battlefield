@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 import BF4Header from "./BF4Header";
 import soldier__BFemblem from "../assets/soldier__BFemblem.svg";
@@ -37,7 +38,7 @@ function SoldierMenuStats(props) {
 
                 <div className="soldier-menu-stats-bar">
                     <div className="soldier-stats-bar-orange"
-                        style={{width: `${(props.points / props.totalPoints * 100) + "%"}`}}
+                        style={{ width: `${(props.points / props.totalPoints * 100) + "%"}` }}
                     ></div>
                     <div className="soldier-menu-stats-bar-black" style={{ backgroundColor: `${isHover ? "rgba(16, 16, 16, 0.3)" : "rgba(16, 16, 16, 0.5)"}` }}></div>
                 </div>
@@ -93,13 +94,30 @@ function SoldierTopStats(props) {
                 </div>
             </div>
 
-            <img src={props.src1} style={{ display: `${isHover ? "none" : "block"}` }} className={"soldier-" + props.classTag + "-white"} alt="weapon-img"/>
-            <img src={props.src2} style={{ display: `${isHover ? "block" : "none"}` }} className={"soldier-" + props.classTag + "-black"} alt="weapon-img"/>
+            <img src={props.src1} style={{ display: `${isHover ? "none" : "block"}` }} className={"soldier-" + props.classTag + "-white"} alt="weapon-img" />
+            <img src={props.src2} style={{ display: `${isHover ? "block" : "none"}` }} className={"soldier-" + props.classTag + "-black"} alt="weapon-img" />
         </a>
     );
 }
 
 function Battlefield4() {
+    const [soldierData, setSoldierData] = useState({});
+
+    const getSoldierInfo = async (req, res) => {
+        try {
+            const { data } = await axios.get(`http://127.0.0.1:8000/bf_4/soldier-data/`);
+            
+            setSoldierData(data[0]);
+        } 
+        catch (error) {
+            console.log(error);
+        }
+    }
+
+    useEffect(() => {
+        getSoldierInfo();
+    }, []);
+
     return (
         <div className="battlefield4-page">
             <BF4Header />
@@ -128,10 +146,10 @@ function Battlefield4() {
 
                                     <div className="soldier-level-stats">
                                         <div className="soldier-level-no">
-                                            <div className="soldier-level-text">63</div>
+                                            <div className="soldier-level-text">{Math.floor(soldierData.soldierPoints / 110000 * 100)}</div>
                                         </div>
 
-                                        <div className="soldier-level-current">69,840 / 110,000</div>
+                                        <div className="soldier-level-current">{soldierData.soldierPoints} / 110000</div>
 
                                         <div className="soldier-level-estimate">- Estimated rank up in 1h</div>
                                     </div>
@@ -142,60 +160,60 @@ function Battlefield4() {
                                 <div className="soldier-menu-w">
                                     <SoldierMenuStats
                                         name="weapons"
-                                        points="134" totalPoints="185"
+                                        points={soldierData.weapons} totalPoints="185"
                                     />
                                     <SoldierMenuStats
                                         name="kits"
-                                        points="46" totalPoints="64"
+                                        points={soldierData.kits} totalPoints="64"
                                     />
                                     <SoldierMenuStats
                                         name="vehicles"
-                                        points="77" totalPoints="182"
+                                        points={soldierData.vehicals} totalPoints="182"
                                     />
                                     <SoldierMenuStats
                                         name="medals"
-                                        points="11" totalPoints="64"
+                                        points={soldierData.medals} totalPoints="64"
                                     />
                                     <SoldierMenuStats
                                         name="assignments"
-                                        points="21" totalPoints="110"
+                                        points={soldierData.assignments} totalPoints="110"
                                     />
                                     <SoldierMenuStats
                                         name="dog tags"
-                                        points="357" totalPoints="720"
+                                        points={soldierData.dogTags} totalPoints="720"
                                     />
                                     <SoldierMenu name="battlepacks" />
                                 </div>
 
                                 <div className="soldier-game-stats">
                                     <div className="soldier-stats-w">
-                                        <SoldierStats name="wins" value="44%" />
-                                        <SoldierStats name="score/min" value="592" />
-                                        <SoldierStats name="kills/min" value="0.60" />
+                                        <SoldierStats name="wins" value={`${soldierData.winsPercentage}%`} />
+                                        <SoldierStats name="score/min" value={soldierData.scorePerMin.toFixed(0)} />
+                                        <SoldierStats name="kills/min" value={soldierData.killsPerMin.toFixed(2)} />
                                     </div>
 
                                     <div className="soldier-top-stats-w">
                                         <SoldierTopStats
                                             name="top vehicle"
-                                            weapon="Main Battle Tank" weapon_s="33 kills"
+                                            weapon={soldierData.topVehical} weapon_s={`${soldierData.topVehicalKills} kills`}
                                             src1={weapon1_white} src2={weapon1_black}
                                             classTag="tank"
                                         />
                                         <SoldierTopStats
                                             name="top primary"
-                                            weapon="ACW-R" weapon_s="496 kills"
+                                            weapon={soldierData.topPrimary} weapon_s={`${soldierData.topPrimaryKills} kills`}
                                             src1={weapon2_white} src2={weapon2_black}
                                             classTag="acw"
                                         />
                                         <SoldierTopStats
                                             name="top class"
-                                            weapon="ENGINEER" weapon_s="828,514 score"
+                                            weapon={soldierData.topClass} weapon_s={`${soldierData.topClassScore} scores`}
                                             src1={weapon3_white} src2={weapon3_black}
                                             classTag="engineer"
                                         />
                                         <SoldierTopStats
                                             name="top sidearm"
-                                            weapon="M9" weapon_s="112 kills"
+                                            weapon={soldierData.topSidearm} weapon_s={`${soldierData.topSidearmKills} kills`}
                                             src1={weapon4_white} src2={weapon4_black}
                                             classTag="m9"
                                         />
