@@ -1,18 +1,20 @@
 # Battlefield 4 Soldier Page
 
-Explore your Battlefield 4 - Soldier Page, a web application offering a quick overview of player's in-game achievements and statistics. This project is built using React.js for the frontend and Django Python with Django Rest Framework for the backend.
+Explore your Battlefield 4 - Soldier Page, a web application offering a quick overview of players' in-game achievements and statistics. 
+
+This project is built using React.js for the frontend and Django Python with Django Rest Framework for the backend.
 
 ## Getting Started
 
 ### Frontend
 
-To run the ColorBit Challenge frontend locally, follow these steps:
+To run the Battlefield Challenge frontend locally, follow these steps:
 
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/Dhruvin711/ColorBit.git
-    cd colorbit
+    git clone https://github.com/Dhruvin711/Battlefield.git
+    cd Battlefield
     ```
 
 2. Navigate to the frontend directory:
@@ -36,7 +38,7 @@ To run the ColorBit Challenge frontend locally, follow these steps:
 
 ### Backend
 
-To run the ColorBit backend locally, follow these steps:
+To run the Battlefield backend locally, follow these steps:
 
 1. Navigate to the backend directory:
 
