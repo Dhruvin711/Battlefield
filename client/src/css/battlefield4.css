@@ -65,7 +65,7 @@
     height: 3.4vh;
 }
 
-/*-------------------------------------- BF4 Home --------------------------------------*/
+/*-------------------------------------- BF4 Soldier Page --------------------------------------*/
 
 .bf4-content-w {
     padding-top: 3.5vh;
@@ -438,4 +438,10 @@
     display: none;
     position: absolute;
     left: 25%;
+}
+
+.loader-container {
+    position: absolute;
+    top: 40%;
+    left: 35%;
 }

@@ -2,6 +2,16 @@ from django.db import models
 
 # Create your models here.
 
+class LevelStat(models.Model):
+    totalPoints = models.IntegerField()
+
+    totalWeapons = models.IntegerField()
+    totalKits = models.IntegerField()
+    totalVehicals = models.IntegerField()
+    totalMedals = models.IntegerField()
+    totalAssignments = models.IntegerField()
+    totalDogTags = models.IntegerField()
+
 class Soldier(models.Model):
     soldierPoints = models.IntegerField()
 
