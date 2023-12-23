@@ -13,7 +13,6 @@ function MenuButton(props) {
 
 function Menu() {
     const path = window.location.pathname;
-    console.log(path);
 
     const [activeBtn, setActiveBtn] = useState("SOLDIER");
     const [activePage, setActivePage] =  useState("SOLDIER");

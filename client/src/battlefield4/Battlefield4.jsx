@@ -103,9 +103,21 @@ function SoldierTopStats(props) {
 function Battlefield4() {
     const [soldierData, setSoldierData] = useState({});
 
+    const localApiURL = 'http://127.0.0.1:8000/bf_4/soldier-data/';
+    const apiURL = 'https://battlefield4-server.onrender.com/bf_4/soldier-data/';
+
     const getSoldierInfo = async (req, res) => {
         try {
-            const { data } = await axios.get(`http://127.0.0.1:8000/bf_4/soldier-data/`);
+            const { data } = await axios.get(localApiURL);
+            
+            setSoldierData(data[0]);
+        } 
+        catch (error) {
+            console.log(error);
+        }
+
+        try {
+            const { data } = await axios.get(apiURL);
             
             setSoldierData(data[0]);
         } 
@@ -188,8 +200,8 @@ function Battlefield4() {
                                 <div className="soldier-game-stats">
                                     <div className="soldier-stats-w">
                                         <SoldierStats name="wins" value={`${soldierData.winsPercentage}%`} />
-                                        <SoldierStats name="score/min" value={soldierData.scorePerMin.toFixed(0)} />
-                                        <SoldierStats name="kills/min" value={soldierData.killsPerMin.toFixed(2)} />
+                                        <SoldierStats name="score/min" value={soldierData.scorePerMin} />
+                                        <SoldierStats name="kills/min" value={soldierData.killsPerMin} />
                                     </div>
 
                                     <div className="soldier-top-stats-w">
