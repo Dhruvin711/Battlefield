@@ -118,6 +118,7 @@ function Battlefield4() {
         }
         catch (error) {
             console.log(error);
+            setLoading(false);
         }
 
         const localApiURL = 'http://127.0.0.1:8000/bf_4/soldier-data/';
@@ -131,6 +132,7 @@ function Battlefield4() {
         }
         catch (error) {
             console.log(error);
+            setLoading(false);
         }
     }
 
