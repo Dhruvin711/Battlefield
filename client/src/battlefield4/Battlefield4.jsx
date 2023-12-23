@@ -109,9 +109,9 @@ function Battlefield4() {
     const getSoldierInfo = async (req, res) => {
         try {
             const { data } = await axios.get(localApiURL);
-            
+
             setSoldierData(data[0]);
-        } 
+        }
         catch (error) {
             console.log(error);
         }
@@ -120,7 +120,7 @@ function Battlefield4() {
             const { data } = await axios.get(apiURL);
             
             setSoldierData(data[0]);
-        } 
+        }
         catch (error) {
             console.log(error);
         }
@@ -199,9 +199,9 @@ function Battlefield4() {
 
                                 <div className="soldier-game-stats">
                                     <div className="soldier-stats-w">
-                                        <SoldierStats name="wins" value={`${soldierData.winsPercentage}%`} />
-                                        <SoldierStats name="score/min" value={soldierData.scorePerMin} />
-                                        <SoldierStats name="kills/min" value={soldierData.killsPerMin} />
+                                        <SoldierStats name="wins" value={`${soldierData.winsPercentage ? soldierData.winsPercentage : "-"}%`} />
+                                        <SoldierStats name="score/min" value={soldierData.scorePerMin ? soldierData.scorePerMin.toFixed(0) : ""} />
+                                        <SoldierStats name="kills/min" value={soldierData.killsPerMin ? soldierData.killsPerMin.toFixed(2) : ""} />
                                     </div>
 
                                     <div className="soldier-top-stats-w">

@@ -1,7 +1,5 @@
-<svg width="33" height="33" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g opacity="0.5">
-<rect x="0.0957031" y="0.172852" width="32" height="16" fill="white"/>
-<rect x="0.0957031" y="20.1396" width="32" height="4" fill="white"/>
-<rect x="0.0957031" y="28.1066" width="32" height="4" fill="white"/>
-</g>
+<svg width="41" height="48" viewBox="0 0 41 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect x="0.398193" y="0.172852" width="40.6018" height="23.9632" fill="white"/>
+<rect x="0.398193" y="30.0771" width="40.6018" height="5.9908" fill="white"/>
+<rect x="0.398193" y="42.0092" width="40.6018" height="5.9908" fill="white"/>
 </svg>

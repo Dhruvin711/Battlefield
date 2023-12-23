@@ -160,6 +160,75 @@ body {
   margin-left: -8vh;
 }
 
+.quit-container {
+  z-index: 10000;
+  background-color: rgba(16, 16, 16, .9);
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  display: none;
+  position: fixed;
+  top: 0%;
+  bottom: 0%;
+  left: 0%;
+  right: 0%;
+}
+
+.quit-text-w {
+  margin-bottom: 5vh;
+}
+
+.quit-text {
+  color: #fff;
+  text-align: center;
+  letter-spacing: .1vh;
+  text-transform: uppercase;
+  margin-bottom: 1vh;
+  font-family: Rajdhani, sans-serif;
+  font-size: 2.4vh;
+  font-weight: 600;
+  line-height: 3vh;
+}
+
+.quit-text-2 {
+  color: rgba(255, 255, 255, .8);
+  text-align: center;
+  letter-spacing: .15vh;
+  text-transform: none;
+  font-family: Rajdhani, sans-serif;
+  font-size: 1.3vh;
+  font-weight: 600;
+  line-height: 2vh;
+}
+
+.quit-buttons-w {
+  display: flex;
+}
+
+.quit-button {
+  color: #fff;
+  text-align: center;
+  letter-spacing: .1vh;
+  text-transform: uppercase;
+  border: 1px solid rgba(255, 255, 255, .3);
+  margin-right: 1vh;
+  padding: 1.5vh 3.5vh;
+  font-family: Rajdhani, sans-serif;
+  font-size: 1.6vh;
+  font-weight: 600;
+  line-height: 2vh;
+  transition: all .1s;
+}
+
+.quit-button:hover {
+  color: #101010;
+  background-color: #fff;
+}
+
+.quit-button.tr-button--nomargin, .quit-button.quit-button--nomargin {
+  margin-right: 0;
+}
+
 /* ------------------------------- Invite-Menu ------------------------------- */
 
 .invite {
@@ -205,7 +274,7 @@ body {
   margin-bottom: 1.5vh;
 }
 
-.invite__squad-icon {
+.invite-squad-icon {
   margin-right: .5vh;
 }
 
