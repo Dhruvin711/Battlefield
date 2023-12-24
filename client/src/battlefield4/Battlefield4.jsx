@@ -17,7 +17,7 @@ import weapon4_white from "../assets/battlefield4/weapon4_white.svg";
 import weapon4_black from "../assets/battlefield4/weapon4_black.svg";
 
 import "../css/battlefield4.css";
-import {BarLoader} from "react-spinners";
+import { BarLoader } from "react-spinners";
 
 function SoldierMenuStats(props) {
     const [isHover, setIsHover] = useState(false);
@@ -101,19 +101,25 @@ function SoldierTopStats(props) {
     );
 }
 
+function addFormat(value) {
+    return new Intl.NumberFormat().format(value);
+}
+
 function Battlefield4() {
     const [soldierData, setSoldierData] = useState({});
     const [levelStats, setLevelStats] = useState({});
     const [loading, setLoading] = useState(true)
 
     const getSoldierInfo = async (req, res) => {
-        const apiURL = 'https://battlefield4-server.onrender.com/bf_4/soldier-data/';
+        const soldier_data_API_URL = 'https://battlefield4-server.onrender.com/bf_4/soldier-data/';
+        const level_stats_API_URL = 'https://battlefield4-server.onrender.com/bf_4/level-stats/';
         try {
             setLoading(true)
-            const { data } = await axios.get(apiURL);
-            
-            setSoldierData((prevData) => ({...prevData, ...data.soldierData}));
-            setLevelStats((prevData) => ({...prevData, ...data.levelStats}));
+            const { data: soldierData } = await axios.get(soldier_data_API_URL);
+            const { data: levelStats } = await axios.get(level_stats_API_URL);
+
+            setSoldierData((prevData) => ({ ...prevData, ...soldierData.soldierData }));
+            setLevelStats((prevData) => ({ ...prevData, ...levelStats.levelStats }));
             setLoading(false);
         }
         catch (error) {
@@ -121,13 +127,15 @@ function Battlefield4() {
             setLoading(false);
         }
 
-        const localApiURL = 'http://127.0.0.1:8000/bf_4/soldier-data/';
+        const soldier_data_localAPI_URL = 'http://127.0.0.1:8000/bf_4/soldier-data/';
+        const level_stats_localAPI_URL = 'http://127.0.0.1:8000/bf_4/level-stats/';
         try {
             setLoading(true)
-            const { data } = await axios.get(localApiURL);
-            
-            setSoldierData((prevData) => ({...prevData, ...data.soldierData}));
-            setLevelStats((prevData) => ({...prevData, ...data.levelStats}));
+            const { data: soldierData } = await axios.get(soldier_data_localAPI_URL);
+            const { data: levelStats } = await axios.get(level_stats_localAPI_URL);
+
+            setSoldierData((prevData) => ({ ...prevData, ...soldierData.soldierData }));
+            setLevelStats((prevData) => ({ ...prevData, ...levelStats.levelStats }));
             setLoading(false);
         }
         catch (error) {
@@ -147,11 +155,11 @@ function Battlefield4() {
 
             <div className="bf4-content-w w-tab-content">
                 <div className="bf4-soldier w-tab-pane w--tab-active">
-                    <div className="loader-container" style={{display: `${loading ? "" : "none"}`}}>
+                    <div className="loader-container" style={{ display: `${loading ? "" : "none"}` }}>
                         <BarLoader color="white" />
                     </div>
-                    
-                    <div className="soldier-content" style={{display: `${loading ? "none" : ""}`}}>
+
+                    <div className="soldier-content" style={{ display: `${loading ? "none" : ""}` }}>
                         <div className="soldier-look">
                             <div className="soldier-dogtags">
                                 <img src={dogtag2} loading="eager" alt="" className="soldier-dogtags-left" />
@@ -176,7 +184,7 @@ function Battlefield4() {
                                             <div className="soldier-level-text">{Math.floor(soldierData.soldierPoints / levelStats.totalPoints * 100)}</div>
                                         </div>
 
-                                        <div className="soldier-level-current">{soldierData.soldierPoints} / {levelStats.totalPoints}</div>
+                                        <div className="soldier-level-current">{addFormat(soldierData.soldierPoints)} / {addFormat(levelStats.totalPoints)}</div>
 
                                         <div className="soldier-level-estimate">- Estimated rank up in 1h</div>
                                     </div>
@@ -187,27 +195,27 @@ function Battlefield4() {
                                 <div className="soldier-menu-w">
                                     <SoldierMenuStats
                                         name="weapons"
-                                        points={soldierData.weapons} totalPoints={levelStats.totalWeapons}
+                                        points={addFormat(soldierData.weapons)} totalPoints={addFormat(levelStats.totalWeapons)}
                                     />
                                     <SoldierMenuStats
                                         name="kits"
-                                        points={soldierData.kits} totalPoints={levelStats.totalKits}
+                                        points={addFormat(soldierData.kits)} totalPoints={addFormat(levelStats.totalKits)}
                                     />
                                     <SoldierMenuStats
                                         name="vehicles"
-                                        points={soldierData.vehicals} totalPoints={levelStats.totalVehicals}
+                                        points={addFormat(soldierData.vehicals)} totalPoints={addFormat(levelStats.totalVehicals)}
                                     />
                                     <SoldierMenuStats
                                         name="medals"
-                                        points={soldierData.medals} totalPoints={levelStats.totalMedals}
+                                        points={addFormat(soldierData.medals)} totalPoints={addFormat(levelStats.totalMedals)}
                                     />
                                     <SoldierMenuStats
                                         name="assignments"
-                                        points={soldierData.assignments} totalPoints={levelStats.totalAssignments}
+                                        points={addFormat(soldierData.assignments)} totalPoints={addFormat(levelStats.totalAssignments)}
                                     />
                                     <SoldierMenuStats
                                         name="dog tags"
-                                        points={soldierData.dogTags} totalPoints={levelStats.totalDogTags}
+                                        points={addFormat(soldierData.dogTags)} totalPoints={addFormat(levelStats.totalDogTags)}
                                     />
                                     <SoldierMenu name="battlepacks" />
                                 </div>
@@ -222,25 +230,25 @@ function Battlefield4() {
                                     <div className="soldier-top-stats-w">
                                         <SoldierTopStats
                                             name="top vehicle"
-                                            weapon={soldierData.topVehical} weapon_s={`${soldierData.topVehicalKills} kills`}
+                                            weapon={addFormat(soldierData.topVehical)} weapon_s={`${addFormat(soldierData.topVehicalKills)} kills`}
                                             src1={weapon1_white} src2={weapon1_black}
                                             classTag="tank"
                                         />
                                         <SoldierTopStats
                                             name="top primary"
-                                            weapon={soldierData.topPrimary} weapon_s={`${soldierData.topPrimaryKills} kills`}
+                                            weapon={addFormat(soldierData.topPrimary)} weapon_s={`${addFormat(soldierData.topPrimaryKills)} kills`}
                                             src1={weapon2_white} src2={weapon2_black}
                                             classTag="acw"
                                         />
                                         <SoldierTopStats
                                             name="top class"
-                                            weapon={soldierData.topClass} weapon_s={`${soldierData.topClassScore} scores`}
+                                            weapon={addFormat(soldierData.topClass)} weapon_s={`${addFormat(soldierData.topClassScore)} scores`}
                                             src1={weapon3_white} src2={weapon3_black}
                                             classTag="engineer"
                                         />
                                         <SoldierTopStats
                                             name="top sidearm"
-                                            weapon={soldierData.topSidearm} weapon_s={`${soldierData.topSidearmKills} kills`}
+                                            weapon={addFormat(soldierData.topSidearm)} weapon_s={`${addFormat(soldierData.topSidearmKills)} kills`}
                                             src1={weapon4_white} src2={weapon4_black}
                                             classTag="m9"
                                         />
