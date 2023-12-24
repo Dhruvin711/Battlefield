@@ -60,7 +60,12 @@ To run the Battlefield backend locally, follow these steps:
 
 ## API Endpoint
 
-The API endpoint for retrieving soldier data is available at:
+1. The API endpoint for retrieving soldier data is available at:
 
 - **Endpoint**: `/bf_4/soldier-data`
+- **Method**: GET
+
+2. The API endpoint for retrieving level stats is available at:
+
+- **Endpoint**: `/bf_4/level-stats`
 - **Method**: GET
